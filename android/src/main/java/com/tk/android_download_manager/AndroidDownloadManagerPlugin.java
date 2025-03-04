@@ -12,18 +12,11 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.PluginRegistry;
 
 public class AndroidDownloadManagerPlugin implements FlutterPlugin, ActivityAware {
     private MethodChannel methodChannel;
     private Activity activity;
     private EventChannel eventChannel;
-
-    @Deprecated
-    public static void registerWith(PluginRegistry.Registrar registrar) {
-        AndroidDownloadManagerPlugin plugin = new AndroidDownloadManagerPlugin();
-        plugin.setupChannels(registrar.messenger(), registrar.context(), registrar.activity());
-    }
 
     private void setupChannels(BinaryMessenger messenger, Context context, Activity activity) {
         methodChannel = new MethodChannel(messenger, "download_manager");
